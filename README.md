@@ -14,6 +14,10 @@
 
 [Live Demo Link](https://livedemo.com)
 
+## Database diagrams
+
+![Database Diagram](./database_design.png)
+
 ## Getting Started
 
 **This is an example of how you may give instructions on setting up your project locally.**

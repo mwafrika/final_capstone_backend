@@ -1,0 +1,2 @@
+class ApisController < ApplicationController
+end

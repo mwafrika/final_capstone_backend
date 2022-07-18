@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
-  namespace :api do
-    namespace :v1 do
-      resources :posts
-    end
-  end
-  
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users, defaults: { format: :json },
+  controllers: {
+      sessions: 'users/sessions',
+      registrations: 'users/registrations'
+  }
+  get '/member-data', to: 'members#show'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root "cars#index"
+  resources :cars, only: [:index, :show, :create, :new, :destroy, :update]
+  resources :locations, only: [:index, :show, :create, :new, :destroy, :update]
+  resources :reservations, only: [:index, :show, :create, :new, :destroy, :update]
 end

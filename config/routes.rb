@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
   get '/member-data', to: 'members#show'
+  get 'latest', to: 'cars#latest'
 
   root "cars#index"
   resources :cars, only: [:index, :show, :create, :new, :destroy, :update]

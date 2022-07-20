@@ -13,13 +13,18 @@ class CarsController < ApplicationController
   end
 
   def create
-    @car = Car.create!(car_params)
+    @car = current_user.cars.create!(car_params)
 
     if @car.save
       json_response(@car, :created)
     else
       json_response(@car.errors, :unprocessable_entity)
     end
+  end
+
+  def latest
+    @post = Car.last.to_json(include: [:image])
+    json_response(@post)
   end
 
   private
@@ -30,6 +35,6 @@ class CarsController < ApplicationController
 
   def car_params
     params.require(:car).permit(:make, :model, :description, :image, :number_of_passenger,
-                                :is_available, :price_per_hour, :price_per_day, :user_id, :location_id)
+                                :is_available, :price_per_hour, :price_per_day, user_id: current_user.id)
   end
 end

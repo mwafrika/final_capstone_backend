@@ -8,4 +8,8 @@ class Car < ApplicationRecord
   def acceptable_image
     return unless image.attached?
   end
+
+  def image_url
+    Rails.application.routes.url_helpers.url_for(image) if image.attached?
+  end
 end

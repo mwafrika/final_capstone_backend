@@ -23,8 +23,8 @@ class CarsController < ApplicationController
   end
 
   def latest
-    @post = Car.last.to_json(include: [:image])
-    json_response(@post)
+    @post = Car.last
+    json_response(CarSerializer.new(@post).serializable_hash[:data][:attributes])
   end
 
   private

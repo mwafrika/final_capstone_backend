@@ -5,10 +5,10 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
   get '/member-data', to: 'members#show'
-  get 'latest', to: 'cars#latest'
+  get 'latest', to: 'bikes#latest'
 
-  root "cars#index"
-  resources :cars, only: [:index, :show, :create, :new, :destroy, :update]
+  root "bikes#index"
+  resources :bikes, only: [:index, :show, :create, :new, :destroy, :update]
   resources :locations, only: [:index, :show, :create, :new, :destroy, :update]
   resources :reservations, only: [:index, :show, :create, :new, :destroy, :update]
 end

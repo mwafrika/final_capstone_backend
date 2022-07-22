@@ -10,10 +10,10 @@ User.create!(email: 'bob@gmail.com', password: '123456',created_at: Time.now, up
 User.create!(email: 'bob1@gmail.com', password: '123456',created_at: Time.now, updated_at: Time.now)
 User.create!(email: 'bob2@gmail.com', password: '123456',created_at: Time.now, updated_at: Time.now)
 
-Car.create!(make: 'Tesla', model: 'BMW',description:'This is a car for rent',image:'https://',number_of_passenger: 4,is_available: true,price_per_hour:10.0, price_per_day:50, created_at: Time.now, updated_at: Time.now, user: User.first)
-Car.create!(make: 'Tesla', model: 'Toyota',description:'This is a car for rent',image:'https://',number_of_passenger: 4,is_available: true,price_per_hour:10.0, price_per_day:50, created_at: Time.now, updated_at: Time.now, user: User.second)
+Bike.create!(make: 'Tesla', model: 'BMW',description:'This is a car for rent',image:'https://',number_of_passenger: 4,is_available: true,price_per_hour:10.0, price_per_day:50, created_at: Time.now, updated_at: Time.now, user: User.first)
+Bike.create!(make: 'Tesla', model: 'Toyota',description:'This is a car for rent',image:'https://',number_of_passenger: 4,is_available: true,price_per_hour:10.0, price_per_day:50, created_at: Time.now, updated_at: Time.now, user: User.second)
 
 Location.create!(full_address:'Goma, western province',created_at: Time.now, updated_at: Time.now, user: User.first)
 Location.create!(full_address:'Bukavu, Norhern province',created_at: Time.now, updated_at: Time.now, user: User.second)
 
-Reservation.create!(reservation_number: 2, date_reserved: '02/02/2023', user: User.first,location: Location.first,car: Car.first,created_at: Time.now, updated_at: Time.now)
+Reservation.create!(reservation_number: 2, date_reserved: '02/02/2023', user: User.first,location: Location.first,car: Bike.first,created_at: Time.now, updated_at: Time.now)

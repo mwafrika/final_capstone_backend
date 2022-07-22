@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_19_214841) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_22_101739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,25 +42,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_19_214841) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "api_v1_posts", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "cars", force: :cascade do |t|
+  create_table "bikes", force: :cascade do |t|
     t.string "make"
     t.string "model"
     t.text "description"
-    t.integer "number_of_passenger"
     t.boolean "is_available"
-    t.float "price_per_hour"
-    t.float "price_per_day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.index ["user_id"], name: "index_cars_on_user_id"
+    t.float "price"
+    t.index ["user_id"], name: "index_bikes_on_user_id"
   end
 
   create_table "jwt_denylist", force: :cascade do |t|
@@ -82,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_19_214841) do
     t.date "date_reserved"
     t.integer "user_id"
     t.integer "location_id"
-    t.integer "car_id"
+    t.integer "bike_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -101,9 +92,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_19_214841) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "cars", "users"
+  add_foreign_key "bikes", "users"
   add_foreign_key "locations", "users"
-  add_foreign_key "reservations", "cars", name: "fk_reservations_cars"
+  add_foreign_key "reservations", "bikes", name: "fk_reservations_cars"
   add_foreign_key "reservations", "locations", name: "fk_reservations_locations"
   add_foreign_key "reservations", "users", name: "fk_reservations_users"
 end

@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :jwt_authenticatable, :registerable,
          jwt_revocation_strategy: JwtDenylist
 
-  has_many :cars, dependent: :destroy
+  has_many :bikes, dependent: :destroy
   has_many :locations, dependent: :destroy
   has_many :reservations, dependent: :destroy # added
 end

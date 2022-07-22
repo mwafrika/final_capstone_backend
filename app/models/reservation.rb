@@ -1,5 +1,5 @@
 class Reservation < ApplicationRecord
-  belongs_to :car
+  belongs_to :bike
   belongs_to :location
   belongs_to :user
   # validates :start_date, presence: true

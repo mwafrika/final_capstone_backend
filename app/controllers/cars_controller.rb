@@ -4,7 +4,7 @@ class CarsController < ApplicationController
 
   include Response
   def index
-    @cars = Car.all
+    @cars = Car.all.map { |car| CarSerializer.new(car).serializable_hash[:data][:attributes] }
     json_response(@cars)
   end
 
@@ -23,7 +23,8 @@ class CarsController < ApplicationController
   end
 
   def latest
-    @post = Car.last
+    # @post = Car.last
+    @post = Car.find(params[:id])
     json_response(CarSerializer.new(@post).serializable_hash[:data][:attributes])
   end
 

@@ -10,8 +10,8 @@ User.create!(email: 'bob@gmail.com', password: '123456',created_at: Time.now, up
 User.create!(email: 'bob1@gmail.com', password: '123456',created_at: Time.now, updated_at: Time.now)
 User.create!(email: 'bob2@gmail.com', password: '123456',created_at: Time.now, updated_at: Time.now)
 
-Bike.create!(make: 'Tesla', model: 'BMW',description:'This is a car for rent',image:'https://',number_of_passenger: 4,is_available: true,price_per_hour:10.0, price_per_day:50, created_at: Time.now, updated_at: Time.now, user: User.first)
-Bike.create!(make: 'Tesla', model: 'Toyota',description:'This is a car for rent',image:'https://',number_of_passenger: 4,is_available: true,price_per_hour:10.0, price_per_day:50, created_at: Time.now, updated_at: Time.now, user: User.second)
+Bike.create!(make: 'Tesla', model: 'BMW',description:'This is a car for rent',is_available: true, price: 40.9, created_at: Time.now, updated_at: Time.now, user: User.first)
+Bike.create!(make: 'Tesla', model: 'Toyota',description:'This is a car for rent',is_available: true,price: 50.5, created_at: Time.now, updated_at: Time.now, user: User.second)
 
 Location.create!(full_address:'Goma, western province',created_at: Time.now, updated_at: Time.now, user: User.first)
 Location.create!(full_address:'Bukavu, Norhern province',created_at: Time.now, updated_at: Time.now, user: User.second)

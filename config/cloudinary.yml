@@ -1,0 +1,18 @@
+development:
+  cloud_name: ujuzi
+  api_key: '854234824891949'
+  api_secret: 'cB5LyGVzFAzcF6jo6b2ddWHxd5A'
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: bm4l2f1pq
+  api_key: '384786930741074'
+  api_secret: '-LladYP3cuLWz1QM3o_wpofEaWI'
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: bm4l2f1pq
+  api_key: '384786930741074'
+  api_secret: '-LladYP3cuLWz1QM3o_wpofEaWI'
+  enhance_image_tag: true
+  static_file_support: false

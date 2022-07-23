@@ -13,7 +13,7 @@ class BikesController < ApplicationController
   end
 
   def create
-    @bike = current_user.cars.create!(bike_params)
+    @bike = current_user.bikes.create!(bike_params)
 
     if @bike.save
       json_response(@bike, :created)
@@ -35,7 +35,7 @@ class BikesController < ApplicationController
   end
 
   def bike_params
-    params.require(:bike).permit(:make, :model, :description, :image,
+    params.permit(:make, :model, :description, :image,
                                  :is_available, :price, user_id: current_user.id)
   end
 end

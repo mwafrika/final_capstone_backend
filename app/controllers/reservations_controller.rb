@@ -17,6 +17,6 @@ class ReservationsController < ApplicationController
 
   def allowed_params
     params.permit(:reservation_number, :date_reserved,
-                  :location_id, :bike_id,  user_id: current_user.id)
+                  :location_id, :bike_id, user_id: current_user.id)
   end
 end

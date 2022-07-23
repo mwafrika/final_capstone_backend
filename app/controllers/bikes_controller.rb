@@ -4,12 +4,17 @@ class BikesController < ApplicationController
 
   include Response
   def index
-    @bike = Bike.all.map { |car| BikeSerializer.new(car).serializable_hash[:data][:attributes] }
+    @bike = Bike.all.map { |bike| BikeSerializer.new(bike).serializable_hash[:data][:attributes] }
     json_response(@bike)
   end
 
   def show
     json_response(BikeSerializer.new(@bike).serializable_hash[:data][:attributes])
+  end
+
+  def destroy
+    @bike.destroy
+    head :no_content
   end
 
   def create
@@ -23,7 +28,6 @@ class BikesController < ApplicationController
   end
 
   def latest
-    # @post = Car.last
     @post = Bike.find(params[:id])
     json_response(BikeSerializer.new(@post).serializable_hash[:data][:attributes])
   end

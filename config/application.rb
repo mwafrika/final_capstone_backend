@@ -1,5 +1,5 @@
 require_relative "boot"
-
+# require 'dotenv/load'
 require "rails/all"
 require "active_storage/engine" #active record
 # Require the gems listed in Gemfile, including any gems
@@ -10,10 +10,13 @@ module BackendeApi
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.assets.initialize_on_precompile = false
 
     config.session_store :cookie_store, key: '_interslice_session'
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
+
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

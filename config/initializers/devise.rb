@@ -20,7 +20,7 @@ Devise.setup do |config|
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
 config.jwt do |jwt|
-  jwt.secret = Rails.application.credentials.devise[:jwt_secret_key]
+  jwt.secret = ENV['jwt_secret_key']
 end
 
   # ==> Mailer Configuration

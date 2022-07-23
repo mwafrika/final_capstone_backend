@@ -11,7 +11,6 @@ class ReservationsController < ApplicationController
     head :no_content
   end
 
-
   def create
     @reserve = current_user.reservations.create!(allowed_params)
 

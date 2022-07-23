@@ -24,10 +24,10 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'https://yamaha-motor.herokuapp.com/',
           variables: {
             defaultHost: {
-              default: '127.0.0.1:3000/'
+              default: 'https://yamaha-motor.herokuapp.com/'
             }
           }
         }

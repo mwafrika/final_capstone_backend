@@ -5,6 +5,13 @@ class ReservationsController < ApplicationController
     json_response(@data)
   end
 
+  def destroy
+    @item = Reservation.find(params[:id])
+    @item.destroy
+    head :no_content
+  end
+
+
   def create
     @reserve = current_user.reservations.create!(allowed_params)
 

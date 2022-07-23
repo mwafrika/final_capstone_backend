@@ -1,12 +1,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'locations', type: :request do
-
   path '/locations' do
-
     get('list locations') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -20,7 +17,6 @@ RSpec.describe 'locations', type: :request do
 
     post('create location') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {

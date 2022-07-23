@@ -5,10 +5,22 @@ class ReservationsController < ApplicationController
     json_response(@data)
   end
 
+  def show
+    if current_item.nil?
+      json_response({ error: 'Item doesn\'t exist' }, :no_content)
+    else
+      json_response(current_item)
+    end
+  end
+
   def destroy
-    @item = Reservation.find(params[:id])
-    @item.destroy
-    head :no_content
+    @item = current_item
+    if @item.nil?
+      json_response({ error: 'Item doesn\'t exist' }, :no_content)
+    else
+      @item.destroy
+      json_response({ message: 'Item deleted successfully' }, :no_content)
+    end
   end
 
   def create
@@ -19,6 +31,10 @@ class ReservationsController < ApplicationController
     else
       json_response(@reserve.errors, :unprocessable_entity)
     end
+  end
+
+  def current_item
+    @current_item = Reservation.find(params[:id]) if Reservation.exists?(params[:id])
   end
 
   def allowed_params

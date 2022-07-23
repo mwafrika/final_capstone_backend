@@ -1,10 +1,24 @@
 require 'swagger_helper'
 
-RSpec.describe 'bikes', type: :request do
+RSpec.describe 'reservations', type: :request do
 
-  path '/' do
+  path '/reservations' do
 
-    get('list bikes') do
+    get('list reservations') do
+      response(200, 'successful') do
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
+
+    post('create reservation') do
       response(200, 'successful') do
 
         after do |example|
@@ -19,42 +33,11 @@ RSpec.describe 'bikes', type: :request do
     end
   end
 
-  path '/bikes' do
-
-    get('list bikes') do
-      response(200, 'successful') do
-
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-        run_test!
-      end
-    end
-
-    post('create bike') do
-      response(200, 'successful') do
-
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-        run_test!
-      end
-    end
-  end
-
-  path '/bikes/{id}' do
+  path '/reservations/{id}' do
     # You'll want to customize the parameter types...
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
-    get('show bike') do
+    get('show reservation') do
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -69,7 +52,7 @@ RSpec.describe 'bikes', type: :request do
       end
     end
 
-    patch('update bike') do
+    patch('update reservation') do
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -84,7 +67,8 @@ RSpec.describe 'bikes', type: :request do
       end
     end
 
-    delete('delete bike') do
+
+    delete('delete reservation') do
       response(200, 'successful') do
         let(:id) { '123' }
 

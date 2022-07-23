@@ -35,7 +35,9 @@ gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
-
+group :assets do
+  gem 'uglifier', '>= 1.0.3', require: 'uglifier'
+ end
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

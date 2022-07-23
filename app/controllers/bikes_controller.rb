@@ -12,6 +12,11 @@ class BikesController < ApplicationController
     json_response(BikeSerializer.new(@bike).serializable_hash[:data][:attributes])
   end
 
+  def destroy
+    @bike.destroy
+    head :no_content
+  end
+
   def create
     @bike = current_user.bikes.create!(bike_params)
 

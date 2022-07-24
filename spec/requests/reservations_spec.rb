@@ -18,15 +18,15 @@ RSpec.describe 'reservations', type: :request do
     post('create reservation') do
       response(200, 'successful') do
         consumes 'application/json'
-        security [Bearer: {}] #added
-        parameter name: :Authorization, in: :header, type: :string #added
+        security [Bearer: {}] # added
+        parameter name: :Authorization, in: :header, type: :string # added
         parameter name: :reservation, in: :body, schema: {
           type: :object,
           properties: {
             reservation_number: { type: :float, default: 0.0 },
-            date_reserved: {type: :date, default: Date.today}
+            date_reserved: { type: :date, default: Date.today }
           },
-          required: %w[reservation_number date_reserved],
+          required: %w[reservation_number date_reserved]
         }
         after do |example|
           example.metadata[:response][:content] = {
@@ -62,8 +62,8 @@ RSpec.describe 'reservations', type: :request do
     delete('delete reservation') do
       response(200, 'successful') do
         consumes 'application/json'
-        security [Bearer: {}] #added
-        parameter name: :Authorization, in: :header, type: :string #added
+        security [Bearer: {}] # added
+        parameter name: :Authorization, in: :header, type: :string # added
         let(:id) { '123' }
 
         after do |example|

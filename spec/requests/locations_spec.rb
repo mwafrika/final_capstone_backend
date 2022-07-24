@@ -18,9 +18,9 @@ RSpec.describe 'locations', type: :request do
     post('create location') do
       response(200, 'successful') do
         consumes 'application/json'
-        security [Bearer: {}] #added
-        parameter name: :Authorization, in: :header, type: :string #added
-        
+        security [Bearer: {}] # added
+        parameter name: :Authorization, in: :header, type: :string # added
+
         parameter name: :full_address, in: :body, type: :string
         after do |example|
           example.metadata[:response][:content] = {
@@ -56,8 +56,8 @@ RSpec.describe 'locations', type: :request do
     delete('delete location') do
       response(200, 'successful') do
         consumes 'application/json'
-        security [Bearer: {}] #added
-        parameter name: :Authorization, in: :header, type: :string #added
+        security [Bearer: {}] # added
+        parameter name: :Authorization, in: :header, type: :string # added
         let(:id) { '123' }
 
         after do |example|

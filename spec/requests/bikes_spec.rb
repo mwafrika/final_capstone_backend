@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 RSpec.describe 'bikes', type: :request do
-  
   path '/bikes' do
     get('list bikes') do
       response(200, 'successful') do
@@ -15,12 +14,12 @@ RSpec.describe 'bikes', type: :request do
         run_test!
       end
     end
-    
+
     post('create bike') do
       response(200, 'successful') do
         consumes 'multipart/form-data'
-        security [Bearer: {}] #added
-        parameter name: :Authorization, in: :header, type: :string #added
+        security [Bearer: {}] # added
+        parameter name: :Authorization, in: :header, type: :string # added
         parameter name: :bike, in: :body, schema: {
           type: :object,
           properties: {
@@ -28,11 +27,11 @@ RSpec.describe 'bikes', type: :request do
             description: { type: :string },
             price: { type: :number },
             image: { type: :file },
-            model: { type: :string},
-            is_available: {type: :boolean}
+            model: { type: :string },
+            is_available: { type: :boolean }
           },
-          required: %w[make model price image is_available description],
-          }
+          required: %w[make model price image is_available description]
+        }
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -67,8 +66,8 @@ RSpec.describe 'bikes', type: :request do
     delete('delete bike') do
       response(200, 'successful') do
         consumes 'application/json'
-        security [Bearer: {}] #added
-        parameter name: :Authorization, in: :header, type: :string #added
+        security [Bearer: {}] # added
+        parameter name: :Authorization, in: :header, type: :string # added
         let(:id) { '123' }
 
         after do |example|

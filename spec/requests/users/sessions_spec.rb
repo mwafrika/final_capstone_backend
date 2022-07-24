@@ -7,14 +7,14 @@ RSpec.describe 'users/sessions', type: :request do
         consumes 'application/json'
         parameter name: :user, in: :body, schema: {
           type: :object,
-            properties: {
-              user: { type: :object,
-                properties: {
-                  email: { type: :string, required: true},
-                  password: { type: :string, required: true}},
-                }
-              }
-            }
+          properties: {
+            user: { type: :object,
+                    properties: {
+                      email: { type: :string, required: true },
+                      password: { type: :string, required: true }
+                    } }
+          }
+        }
 
         after do |example|
           example.metadata[:response][:content] = {

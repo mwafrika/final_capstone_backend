@@ -223,10 +223,10 @@ paths:
                       type: string
                       required: true
 servers:
-- url: http://localhost:3000
+- url: https://yamaha-motor.herokuapp.com
   variables:
     defaultHost:
-      default: http://localhost:3000
+      default: https://yamaha-motor.herokuapp.com
 components:
   securitySchemes:
     Bearer:

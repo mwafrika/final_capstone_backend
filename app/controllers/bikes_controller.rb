@@ -1,5 +1,5 @@
 class BikesController < ApplicationController
-  before_action :authenticate_user!, only: %i[create update destroy]
+  before_action :authenticate_user!, only: %i[create update destroy new]
   before_action :set_bike, only: %i[show update destroy]
 
   include Response

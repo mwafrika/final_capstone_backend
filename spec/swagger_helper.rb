@@ -22,14 +22,24 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://yamaha-motor.herokuapp.com/',
+          url: 'https://yamaha-motor.herokuapp.com',
           variables: {
             defaultHost: {
-              default: 'https://yamaha-motor.herokuapp.com/'
+              default: 'https://yamaha-motor.herokuapp.com'
             }
           }
         }
-      ]
+      ],
+      components: {
+        securitySchemes: {
+          Bearer: {
+            type: :apiKey,
+            in: :header,
+            name: 'Authorization',
+            description: 'Bearer token'
+          }
+        }
+      }
     }
   }
 

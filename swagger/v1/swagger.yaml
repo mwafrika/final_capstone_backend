@@ -4,12 +4,6 @@ info:
   title: API V1
   version: v1
 paths:
-  "/":
-    get:
-      summary: list bikes
-      responses:
-        '200':
-          description: successful
   "/bikes":
     get:
       summary: list bikes
@@ -18,9 +12,41 @@ paths:
           description: successful
     post:
       summary: create bike
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
       responses:
         '200':
           description: successful
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                make:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                image:
+                  type: file
+                model:
+                  type: string
+                is_available:
+                  type: boolean
+              required:
+              - make
+              - model
+              - price
+              - image
+              - is_available
+              - description
   "/bikes/{id}":
     parameters:
     - name: id
@@ -34,13 +60,15 @@ paths:
       responses:
         '200':
           description: successful
-    patch:
-      summary: update bike
-      responses:
-        '200':
-          description: successful
     delete:
       summary: delete bike
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
       responses:
         '200':
           description: successful
@@ -52,9 +80,21 @@ paths:
           description: successful
     post:
       summary: create location
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
       responses:
         '200':
           description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
   "/locations/{id}":
     parameters:
     - name: id
@@ -68,13 +108,15 @@ paths:
       responses:
         '200':
           description: successful
-    patch:
-      summary: update location
-      responses:
-        '200':
-          description: successful
     delete:
       summary: delete location
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
       responses:
         '200':
           description: successful
@@ -86,9 +128,31 @@ paths:
           description: successful
     post:
       summary: create reservation
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
       responses:
         '200':
           description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reservation_number:
+                  type: float
+                  default: 0.0
+                date_reserved:
+                  type: date
+                  default: '2022-07-25'
+              required:
+              - reservation_number
+              - date_reserved
   "/reservations/{id}":
     parameters:
     - name: id
@@ -102,36 +166,71 @@ paths:
       responses:
         '200':
           description: successful
-    patch:
-      summary: update reservation
-      responses:
-        '200':
-          description: successful
     delete:
       summary: delete reservation
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
       responses:
         '200':
           description: successful
   "/users/sign_up":
     post:
       summary: create registration
+      parameters: []
       responses:
         '200':
           description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      required: true
+                    password:
+                      type: string
+                      required: true
   "/users/sign_in":
     post:
       summary: create session
+      parameters: []
       responses:
         '200':
           description: successful
-  "/users/sign_out":
-    delete:
-      summary: delete session
-      responses:
-        '200':
-          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      required: true
+                    password:
+                      type: string
+                      required: true
 servers:
-- url: https://yamaha-motor.herokuapp.com/
+- url: http://localhost:3000
   variables:
     defaultHost:
-      default: https://yamaha-motor.herokuapp.com/
+      default: http://localhost:3000
+components:
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Bearer token

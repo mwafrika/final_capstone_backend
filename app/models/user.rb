@@ -8,5 +8,4 @@ class User < ApplicationRecord
   has_many :bikes, dependent: :destroy
   has_many :locations, dependent: :destroy
   has_many :reservations, dependent: :destroy # added
-
 end

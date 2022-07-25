@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create!(email: 'bob@gmail.com', password: '123456',created_at: Time.now, updated_at: Time.now)
-User.create!(email: 'bob1@gmail.com', password: '123456',created_at: Time.now, updated_at: Time.now)
-User.create!(email: 'bob2@gmail.com', password: '123456',created_at: Time.now, updated_at: Time.now)
+# User.create!(email: 'bob@gmail.com', password: '123456',created_at: Time.now, updated_at: Time.now)
+# User.create!(email: 'bob1@gmail.com', password: '123456',created_at: Time.now, updated_at: Time.now)
+# User.create!(email: 'bob2@gmail.com', password: '123456',created_at: Time.now, updated_at: Time.now)
 
 Bike.create!(make: 'Tesla', model: 'BMW',description:'This is a bike for rent',is_available: true, price: 40.9, created_at: Time.now, updated_at: Time.now, user: User.first)
 Bike.create!(make: 'Tesla', model: 'Toyota',description:'This is a bike for rent',is_available: true,price: 50.5, created_at: Time.now, updated_at: Time.now, user: User.second)

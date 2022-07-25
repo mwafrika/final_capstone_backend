@@ -22,7 +22,6 @@ class BikesController < ApplicationController
 
     if @bike.save
       json_response(BikeSerializer.new(@bike).serializable_hash[:data][:attributes], :created)
-      # json_response(@bike, :created)
     else
       json_response(@bike.errors, :unprocessable_entity)
     end

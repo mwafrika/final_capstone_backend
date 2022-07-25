@@ -178,7 +178,7 @@ paths:
       responses:
         '200':
           description: successful
-  "/users/sign_up":
+  "/users":
     post:
       summary: create registration
       parameters: []

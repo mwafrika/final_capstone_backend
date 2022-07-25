@@ -1,5 +1,5 @@
 class BikesController < ApplicationController
-  before_action :authenticate_user!, only: %i[create update destroy]
+  before_action :authenticate_user!, only: %i[create update destroy new]
   before_action :set_bike, only: %i[show update destroy]
 
   include Response
@@ -21,7 +21,7 @@ class BikesController < ApplicationController
     @bike = current_user.bikes.create!(bike_params)
 
     if @bike.save
-      json_response(@bike, :created)
+      json_response(BikeSerializer.new(@bike).serializable_hash[:data][:attributes], :created)
     else
       json_response(@bike.errors, :unprocessable_entity)
     end

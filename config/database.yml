@@ -85,6 +85,6 @@ test:
 #
 production:
   <<: *default
-  database: car_production
-  username: <%= ENV["app_username"] %>
-  password: <%= ENV["app_password"] %>
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["USER_NAME"] %>
+  password: <%= ENV["USER_PASSWORD"] %>

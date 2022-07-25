@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'users/registrations', type: :request do
-  path '/users/sign_up' do
+  path '/users' do
     post('create registration') do
       response(200, 'successful') do
         consumes 'application/json'

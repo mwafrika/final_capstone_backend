@@ -26,5 +26,20 @@ RSpec.describe 'users/sessions', type: :request do
         run_test!
       end
     end
+    delete('destroy session') do
+      response(200, 'successful') do
+        consumes 'application/json'
+        security [Bearer: {}]
+        parameter name: :Authorization, in: :header, type: :string
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
   end
 end

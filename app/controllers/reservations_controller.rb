@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
 
   include Response
   def index
-    @data = Reservation.all
+    @data = current_user.reservations.all
     json_response(@data)
   end
 
@@ -39,11 +39,10 @@ class ReservationsController < ApplicationController
   private
 
   def current_item
-    @current_item = Reservation.find(params[:id]) if Reservation.exists?(params[:id])
+    @current_item = current_user.reservations.find(params[:id]) if current_user.reservations.exists?(params[:id])
   end
 
   def allowed_params
-    params.permit(:reservation_number, :date_reserved, :location_id, :bike_id,
-                  user_id: current_user.id)
+    params.permit(:reservation_number, :date_reserved, :location_id, :bike_id, user_id: current_user.id)
   end
 end

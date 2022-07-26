@@ -10,8 +10,11 @@ RSpec.describe 'users/registrations', type: :request do
           properties: {
             user: { type: :object,
                     properties: {
+                      username: { type: :string, required: true },
                       email: { type: :string, required: true },
-                      password: { type: :string, required: true }
+                      password: { type: :string, required: true },
+                      bio: { type: :text, required: true },
+                      address: { type: :string, required: true }
                     } }
           }
         }

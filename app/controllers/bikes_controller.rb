@@ -28,14 +28,14 @@ class BikesController < ApplicationController
   end
 
   def latest
-    @post = Bike.find(params[:id])
+    @post = current_user.bikes.find(params[:id])
     json_response(BikeSerializer.new(@post).serializable_hash[:data][:attributes])
   end
 
   private
 
   def set_bike
-    @bike = Bike.find(params[:id])
+    @bike = current_user.bikes.find(params[:id])
   end
 
   def bike_params

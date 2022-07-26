@@ -94,7 +94,10 @@ paths:
         content:
           application/json:
             schema:
-              type: string
+              type: object
+              properties:
+                full_address:
+                  type: string
   "/locations/{id}":
     parameters:
     - name: id
@@ -149,7 +152,7 @@ paths:
                   default: 0.0
                 date_reserved:
                   type: date
-                  default: '2022-07-25'
+                  default: '2022-07-26'
               required:
               - reservation_number
               - date_reserved
@@ -194,10 +197,19 @@ paths:
                 user:
                   type: object
                   properties:
+                    username:
+                      type: string
+                      required: true
                     email:
                       type: string
                       required: true
                     password:
+                      type: string
+                      required: true
+                    bio:
+                      type: text
+                      required: true
+                    address:
                       type: string
                       required: true
   "/users/sign_in":
@@ -222,6 +234,18 @@ paths:
                     password:
                       type: string
                       required: true
+    delete:
+      summary: destroy session
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
 servers:
 - url: https://yamaha-motor.herokuapp.com
   variables:

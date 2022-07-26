@@ -3,7 +3,7 @@ class Bike < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :locations, through: :reservations, dependent: :destroy
   has_one_attached :image
-  validate :acceptable_image
+  validates :acceptable_image
   validates :make, presence: true
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :model, presence: true

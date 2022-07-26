@@ -26,6 +26,8 @@ RSpec.describe 'users/sessions', type: :request do
         run_test!
       end
     end
+  end
+  path '/users/sign_out' do
     delete('destroy session') do
       response(200, 'successful') do
         consumes 'application/json'

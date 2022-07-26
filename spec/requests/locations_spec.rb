@@ -21,7 +21,12 @@ RSpec.describe 'locations', type: :request do
         security [Bearer: {}] # added
         parameter name: :Authorization, in: :header, type: :string # added
 
-        parameter name: :full_address, in: :body, type: :string
+        parameter name: :location, in: :body, schema: {
+          type: :object,
+          properties: {
+            full_address: { type: :string }
+          }
+        }
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {

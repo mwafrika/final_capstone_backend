@@ -20,7 +20,15 @@ Devise.setup do |config|
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
 config.jwt do |jwt|
-  jwt.secret = ENV['jwt_secret_key']
+  jwt.secret = ENV['jwt_secret_key']  # Add this line in your production environment
+  # jwt.secret = Rails.application.credentials.devise[:jwt_secret_key] # Add this line in your development env
+  jwt.dispatch_requests = [
+    ['POST', %r{^/sign_in$}]
+  ]
+  jwt.revocation_requests = [
+    ['DELETE', %r{^/sign_out$}]
+  ]
+  jwt.expiration_time = 15.day.to_i
 end
 
   # ==> Mailer Configuration

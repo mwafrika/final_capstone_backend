@@ -153,6 +153,10 @@ paths:
                 date_reserved:
                   type: date
                   default: '2022-07-26'
+                location_id:
+                  type: integer
+                bike_id:
+                  type: integer
               required:
               - reservation_number
               - date_reserved

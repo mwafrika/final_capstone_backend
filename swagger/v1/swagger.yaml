@@ -234,6 +234,7 @@ paths:
                     password:
                       type: string
                       required: true
+  "/users/sign_out":
     delete:
       summary: destroy session
       security:

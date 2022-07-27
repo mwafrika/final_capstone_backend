@@ -39,7 +39,7 @@ class BikesController < ApplicationController
   end
 
   def bike_params
-    params.permit(:make, :model, :description, :image,
+    params.(:bike).permit(:make, :model, :description, :image,
                   :is_available, :price, user_id: current_user.id)
   end
 end

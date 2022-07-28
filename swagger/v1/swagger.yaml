@@ -72,57 +72,6 @@ paths:
       responses:
         '200':
           description: successful
-  "/locations":
-    get:
-      summary: list locations
-      responses:
-        '200':
-          description: successful
-    post:
-      summary: create location
-      security:
-      - Bearer: {}
-      parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
-      responses:
-        '200':
-          description: successful
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                full_address:
-                  type: string
-  "/locations/{id}":
-    parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
-    get:
-      summary: show location
-      responses:
-        '200':
-          description: successful
-    delete:
-      summary: delete location
-      security:
-      - Bearer: {}
-      parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
-      responses:
-        '200':
-          description: successful
   "/reservations":
     get:
       summary: list reservations
@@ -147,14 +96,11 @@ paths:
             schema:
               type: object
               properties:
-                reservation_number:
-                  type: float
-                  default: 0.0
                 date_reserved:
                   type: date
-                  default: '2022-07-26'
-                location_id:
-                  type: integer
+                  default: '2022-07-28'
+                city:
+                  type: string
                 bike_id:
                   type: integer
               required:
@@ -212,9 +158,6 @@ paths:
                       required: true
                     bio:
                       type: text
-                      required: true
-                    address:
-                      type: string
                       required: true
   "/users/sign_in":
     post:

@@ -1,18 +1,26 @@
 class ReservationsController < ApplicationController
-  before_action :authenticate_user!, only: %i[create update destroy new]
+  before_action :authenticate_user!, only: %i[create update destroy new index]
   before_action :current_item, only: %i[show update destroy]
 
   include Response
   def index
-    @data = current_user.reservations.all
-    json_response(@data)
+    lists = current_user.reservations.includes(:bike).map do |item|
+      {
+        id: item.id,
+        city: item.city,
+        date_reserved: item.date_reserved,
+        reservation_number: item.reservation_number,
+        bike: item.bike,
+      }
+    end
+    render json: { status: 'success', message: 'Loaded success', data: lists }, status: :ok
   end
 
   def show
     if current_item.nil?
-      json_response({ error: 'Item doesn\'t exist' }, :no_content)
+      render json: { status: 'no content', message: 'Not able to get', data: {} }, status: :ok
     else
-      json_response(current_item)
+      render json: { status: 'success', message: 'load success', data: current_item }, status: :ok
     end
   end
 

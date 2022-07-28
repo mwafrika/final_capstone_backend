@@ -23,8 +23,9 @@ RSpec.describe 'reservations', type: :request do
         parameter name: :reservation, in: :body, schema: {
           type: :object,
           properties: {
-            reservation_number: { type: :float, default: 0.0 },
-            date_reserved: { type: :date, default: Date.today }
+            date_reserved: { type: :date, default: Date.today },
+            city: { type: :string },
+            bike_id: { type: :integer }
           },
           required: %w[reservation_number date_reserved]
         }

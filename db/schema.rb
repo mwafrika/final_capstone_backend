@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_26_091337) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_28_055234) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,14 +60,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_091337) do
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
   end
 
-  create_table "locations", force: :cascade do |t|
-    t.text "full_address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_locations_on_user_id"
-  end
-
   create_table "reservations", force: :cascade do |t|
     t.integer "reservation_number"
     t.date "date_reserved"
@@ -76,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_091337) do
     t.integer "bike_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "city"
   end
 
   create_table "users", force: :cascade do |t|
@@ -96,8 +89,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_091337) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bikes", "users"
-  add_foreign_key "locations", "users"
   add_foreign_key "reservations", "bikes", name: "fk_reservations_cars"
-  add_foreign_key "reservations", "locations", name: "fk_reservations_locations"
   add_foreign_key "reservations", "users", name: "fk_reservations_users"
 end

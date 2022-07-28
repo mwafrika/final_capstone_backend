@@ -81,7 +81,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_28_055234) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.text "bio"
-    t.string "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

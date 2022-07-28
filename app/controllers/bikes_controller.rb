@@ -1,6 +1,6 @@
 class BikesController < ApplicationController
   before_action :authenticate_user!, only: %i[create update destroy new]
-  before_action :set_bike, only: %i[show update destroy]
+  before_action :set_bike, only: %i[update destroy]
 
   include Response
   def index
@@ -9,6 +9,7 @@ class BikesController < ApplicationController
   end
 
   def show
+    @bike = Bike.find(params[:id])
     json_response(BikeSerializer.new(@bike).serializable_hash[:data][:attributes])
   end
 

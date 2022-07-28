@@ -14,7 +14,6 @@ RSpec.describe 'users/registrations', type: :request do
                       email: { type: :string, required: true },
                       password: { type: :string, required: true },
                       bio: { type: :text, required: true },
-                      address: { type: :string, required: true }
                     } }
           }
         }

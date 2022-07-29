@@ -51,6 +51,7 @@ paths:
                 - description
   '/bikes/{id}':
     parameters:
+
       - name: id
         in: path
         description: id
@@ -74,7 +75,7 @@ paths:
       responses:
         '200':
           description: successful
-  '/reservations':
+  "/reservations":
     get:
       summary: list reservations
       responses:
@@ -98,16 +99,14 @@ paths:
             schema:
               type: object
               properties:
-                reservation_number:
-                  type: float
-                  default: 0.0
                 date_reserved:
                   type: date
-                  default: '2022-07-26'
+                  default: '2022-07-28'
+                city:
+                  type: string
                 bike_id:
                   type: integer
               required:
-                - reservation_number
                 - date_reserved
   '/reservations/{id}':
     parameters:
@@ -162,9 +161,7 @@ paths:
                     bio:
                       type: text
                       required: true
-                    address:
-                      type: string
-                      required: true
+           
   '/users/sign_in':
     post:
       summary: create session

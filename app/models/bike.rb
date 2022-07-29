@@ -8,7 +8,7 @@ class Bike < ApplicationRecord
   validates :model, presence: true
   validates :description, presence: true
   validates :is_available, presence: true
-  #added
+  # added
   validates :user_id, presence: true
 
   def acceptable_image

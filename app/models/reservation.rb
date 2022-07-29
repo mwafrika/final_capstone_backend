@@ -4,7 +4,7 @@ class Reservation < ApplicationRecord
   # added
   validates :bike_id, presence: true
   validates :user_id, presence: true
-  #added
+  # added
   validates :city, presence: true
   validates :date_reserved, presence: true
 end

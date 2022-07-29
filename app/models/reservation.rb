@@ -1,7 +1,10 @@
 class Reservation < ApplicationRecord
   belongs_to :bike
   belongs_to :user
-
-  validates :reservation_number, presence: true, numericality: { in: 1..15 }
+  # added
+  validates :bike_id, presence: true
+  validates :user_id, presence: true
+  # added
+  validates :city, presence: true
   validates :date_reserved, presence: true
 end

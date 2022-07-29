@@ -28,6 +28,7 @@ RSpec.describe 'bikes', type: :request do
             price: { type: :number },
             image: { type: :file },
             model: { type: :string },
+            user_id: { type: :integer },
             is_available: { type: :boolean }
           },
           required: %w[make model price image is_available description]

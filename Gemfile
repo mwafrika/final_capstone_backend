@@ -14,6 +14,7 @@ gem 'sprockets-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 gem 'rdoc'
+gem 'rswag'
 gem 'rswag-api'
 gem 'rswag-ui'
 

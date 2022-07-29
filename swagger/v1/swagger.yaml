@@ -4,7 +4,7 @@ info:
   title: API V1
   version: v1
 paths:
-  "/bikes":
+  '/bikes':
     get:
       summary: list bikes
       responses:
@@ -13,12 +13,12 @@ paths:
     post:
       summary: create bike
       security:
-      - Bearer: {}
+        - Bearer: {}
       parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
+        - name: Authorization
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: successful
@@ -40,21 +40,24 @@ paths:
                   type: string
                 is_available:
                   type: boolean
+                user_id:
+                  type: integer
               required:
-              - make
-              - model
-              - price
-              - image
-              - is_available
-              - description
-  "/bikes/{id}":
+                - make
+                - model
+                - price
+                - image
+                - is_available
+                - description
+  '/bikes/{id}':
     parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
+
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
     get:
       summary: show bike
       responses:
@@ -63,63 +66,12 @@ paths:
     delete:
       summary: delete bike
       security:
-      - Bearer: {}
+        - Bearer: {}
       parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
-      responses:
-        '200':
-          description: successful
-  "/locations":
-    get:
-      summary: list locations
-      responses:
-        '200':
-          description: successful
-    post:
-      summary: create location
-      security:
-      - Bearer: {}
-      parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
-      responses:
-        '200':
-          description: successful
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                full_address:
-                  type: string
-  "/locations/{id}":
-    parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
-    get:
-      summary: show location
-      responses:
-        '200':
-          description: successful
-    delete:
-      summary: delete location
-      security:
-      - Bearer: {}
-      parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
+        - name: Authorization
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: successful
@@ -132,12 +84,12 @@ paths:
     post:
       summary: create reservation
       security:
-      - Bearer: {}
+        - Bearer: {}
       parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
+        - name: Authorization
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: successful
@@ -147,27 +99,23 @@ paths:
             schema:
               type: object
               properties:
-                reservation_number:
-                  type: float
-                  default: 0.0
                 date_reserved:
                   type: date
-                  default: '2022-07-26'
-                location_id:
-                  type: integer
+                  default: '2022-07-28'
+                city:
+                  type: string
                 bike_id:
                   type: integer
               required:
-              - reservation_number
-              - date_reserved
-  "/reservations/{id}":
+                - date_reserved
+  '/reservations/{id}':
     parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
     get:
       summary: show reservation
       responses:
@@ -176,16 +124,16 @@ paths:
     delete:
       summary: delete reservation
       security:
-      - Bearer: {}
+        - Bearer: {}
       parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
+        - name: Authorization
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: successful
-  "/users":
+  '/users':
     post:
       summary: create registration
       parameters: []
@@ -213,10 +161,8 @@ paths:
                     bio:
                       type: text
                       required: true
-                    address:
-                      type: string
-                      required: true
-  "/users/sign_in":
+           
+  '/users/sign_in':
     post:
       summary: create session
       parameters: []
@@ -238,24 +184,24 @@ paths:
                     password:
                       type: string
                       required: true
-  "/users/sign_out":
+  '/users/sign_out':
     delete:
       summary: destroy session
       security:
-      - Bearer: {}
+        - Bearer: {}
       parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
+        - name: Authorization
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: successful
 servers:
-- url: https://yamaha-motor.herokuapp.com
-  variables:
-    defaultHost:
-      default: https://yamaha-motor.herokuapp.com
+  - url: https://yamaha-motor.herokuapp.com
+    variables:
+      defaultHost:
+        default: https://yamaha-motor.herokuapp.com
 components:
   securitySchemes:
     Bearer:

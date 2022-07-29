@@ -234,6 +234,10 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.5)
+    rswag (2.5.1)
+      rswag-api (= 2.5.1)
+      rswag-specs (= 2.5.1)
+      rswag-ui (= 2.5.1)
     rswag-api (2.5.1)
       railties (>= 3.1, < 7.1)
     rswag-ui (2.5.1)
@@ -330,6 +334,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.3, >= 7.0.3.1)
   rdoc
+  rswag
   rswag-api
   rswag-ui
   rubocop (>= 1.0, < 2.0)

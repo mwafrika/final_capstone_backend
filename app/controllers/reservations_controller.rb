@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :authenticate_user!, only: %i[create update destroy new index]
+  before_action :authenticate_user!, only: %i[create update new index]
   before_action :current_item, only: %i[show update destroy]
 
   include Response
@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
         city: item.city,
         date_reserved: item.date_reserved,
         reservation_number: item.reservation_number,
-        bike: item.bike
+        bike: BikeSerializer.new(item.bike).serializable_hash[:data][:attributes]
       }
     end
     render json: { status: 'success', message: 'Loaded success', data: lists }, status: :ok

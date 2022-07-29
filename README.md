@@ -157,7 +157,7 @@ _For more Info on how to use the API, please refer to the [Yamaha motor API Docu
 
 👉 [Kanban board link](https://github.com/mwafrika/final_capstone_frontend/projects/1)
 
-<img src="./canban.png" alt="drawing" height="150"/>
+<img src="./canban.png" alt="drawing" />
 
 👉 This project was authored by <a href="#authors">Four contributors</a> as described in the the Authors section bellow.
 

@@ -254,10 +254,6 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
-    rswag (2.5.1)
-      rswag-api (= 2.5.1)
-      rswag-specs (= 2.5.1)
-      rswag-ui (= 2.5.1)
     rswag-api (2.5.1)
       railties (>= 3.1, < 7.1)
     rswag-specs (2.5.1)
@@ -359,8 +355,8 @@ DEPENDENCIES
   rails (~> 7.0.3, >= 7.0.3.1)
   rdoc
   rspec-rails
-  rswag
   rswag-api
+  rswag-specs
   rswag-ui
   rubocop (>= 1.0, < 2.0)
   selenium-webdriver
@@ -373,7 +369,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.0.4p208
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.3.15

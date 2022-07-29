@@ -64,11 +64,11 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails'
 
-  begin
-   require 'minitest/autorun'
-  rescue LoadError => e
-   raise e unless ENV['RAILS_ENV'] == "production"
-  end
+  # begin
+  #  require 'minitest/autorun'
+  # rescue LoadError => e
+  #  raise e unless ENV['RAILS_ENV'] == "production"
+  # end
 end
 
 group :development do

@@ -12,6 +12,7 @@ gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 gem 'cloudinary'
 gem 'sprockets-rails'
 # Use postgresql as the database for Active Record
+gem 'rswag'
 gem 'pg', '~> 1.1'
 gem 'rdoc'
 gem 'rswag-api'

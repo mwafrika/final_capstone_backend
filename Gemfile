@@ -63,6 +63,12 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails'
+
+  begin
+   require 'minitest/autorun'
+  rescue LoadError => e
+   raise e unless ENV['RAILS_ENV'] == "production"
+  end
 end
 
 group :development do

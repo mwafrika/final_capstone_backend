@@ -16,6 +16,12 @@ module BackendeApi
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
 
+    begin
+      require 'minitest/autorun'
+    rescue LoadError => e
+      raise e unless ENV['RAILS_ENV'] == "production"
+    end
+    
 
     # Configuration for the application, engines, and railties goes here.
     #

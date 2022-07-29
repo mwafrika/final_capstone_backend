@@ -7,7 +7,7 @@ gem 'dotenv-rails', groups: %i[development test]
 gem 'rubocop', '>= 1.0', '< 2.0'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'ffi'
-gem 'bundler', '~> 2.1.4'
+gem 'bundler', '~> 2.3.10'
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'cloudinary'

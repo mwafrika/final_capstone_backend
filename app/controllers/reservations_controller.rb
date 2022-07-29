@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
         city: item.city,
         date_reserved: item.date_reserved,
         reservation_number: item.reservation_number,
-        bike: item.bike,
+        bike: item.bike
       }
     end
     render json: { status: 'success', message: 'Loaded success', data: lists }, status: :ok

@@ -6,7 +6,6 @@ class User < ApplicationRecord
          jwt_revocation_strategy: JwtDenylist
 
   has_many :bikes, dependent: :destroy
-  has_many :locations, dependent: :destroy
   has_many :reservations, dependent: :destroy # added
 
   validates :email, presence: true, uniqueness: true

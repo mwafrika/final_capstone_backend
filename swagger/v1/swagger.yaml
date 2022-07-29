@@ -1,0 +1,212 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/bikes":
+    get:
+      summary: list bikes
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create bike
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                make:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                image:
+                  type: file
+                model:
+                  type: string
+                user_id:
+                  type: integer
+                is_available:
+                  type: boolean
+              required:
+              - make
+              - model
+              - price
+              - image
+              - is_available
+              - description
+  "/bikes/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show bike
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete bike
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+  "/reservations":
+    get:
+      summary: list reservations
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create reservation
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date_reserved:
+                  type: date
+                  default: '2022-07-29'
+                city:
+                  type: string
+                bike_id:
+                  type: integer
+                user_id:
+                  type: integer
+              required:
+              - reservation_number
+              - date_reserved
+  "/reservations/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show reservation
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete reservation
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+  "/users":
+    post:
+      summary: create registration
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                      required: true
+                    email:
+                      type: string
+                      required: true
+                    password:
+                      type: string
+                      required: true
+                    bio:
+                      type: string
+                      required: true
+  "/users/sign_in":
+    post:
+      summary: create session
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      required: true
+                    password:
+                      type: string
+                      required: true
+  "/users/sign_out":
+    delete:
+      summary: destroy session
+      security:
+      - Bearer: {}
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://yamaha-motor.herokuapp.com
+  variables:
+    defaultHost:
+      default: https://yamaha-motor.herokuapp.com
+components:
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Bearer token
